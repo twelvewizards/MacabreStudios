@@ -1,0 +1,592 @@
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+}
+
+#bg-image-container {
+    position: relative; /* Position relative to place the content within it */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Height of the background image */
+    z-index: -1; /* Send it to the back */
+    background-image: url('/2/assets/dreadfuldescent/dreadbg.png');
+    background-size: cover;
+    background-attachment: scroll; /* Image will scroll with the page */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* This will center the child vertically */
+    justify-content: center; /* This will center the child horizontally */
+}
+
+body {
+    margin: 0;
+    padding-top: 0; /* Removed the padding-top, adjust if necessary */
+    background: none; /* No background color, transparent */
+}
+/* Home page css */
+
+#black-rectangle {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 70px;  
+background-color: black;
+z-index: 2000; /* Higher z-index */
+}
+#mobile-nav-icon {
+    position: fixed;
+    top: 15px;
+    right: 40px;
+    font-size: 30px;
+    color: white;
+    z-index: 2001; /* Higher z-index to display in front of black rectangle */
+}
+
+/* Mobile Nav Overlay styles */
+#mobile-nav-overlay {
+    position: fixed;
+    top: 70px;
+    right: -100%;  /* Start off the screen */
+    width: 80%;  /* Or however wide you want the overlay */
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* Align items to the left */
+    justify-content: flex-start;  /* Align items to the top */
+    padding: 20px;  /* Add some padding */
+    z-index: 1000;  /* Higher z-index to display in front */
+}
+
+/* Add new style for mobile-nav-overlay links */
+#mobile-nav-overlay a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    font-family: 'PT Sans Caption', sans-serif; /* New font */
+    text-align: left;  /* Align text to the left */
+    padding: 5px 10px; /* Add padding around the text */
+    transition: background-color 0.3s ease; /* Transition effect for smooth background color change */
+
+}
+
+#mobile-nav-overlay a:hover {
+    background-color: #ff1500c3; /* Red background on hover */
+    color: white; /* Keep the text color white */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Mobile Dropdown Styles */
+.mobile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.mobile-dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute;
+    left: 100%; /* Position to the right of the button */
+    top: 0; /* Align with the top of the button */
+    background-color: black; /* Match the nav background */
+    min-width: 160px; /* Adjust width as needed */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 0.5s linear; /* Add transitions */
+    transition-delay: 0.5s; /* Delay of 500 milliseconds */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent */
+}
+
+.mobile-dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.mobile-dropdown-content a:hover { background-color: #f1f1f1; color: black; }
+
+.mobile-dropdown:hover .mobile-dropdown-content {
+    display: block; /* Show on hover */
+    visibility: visible; /* Make it visible on hover */
+    opacity: 1; /* Fully opaque */
+    transition-delay: 0.5s; /* No delay when hiding */
+}
+
+#close-nav-icon {
+    position: absolute;
+    top: -40px;
+    right: 45px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.498);
+    cursor: pointer;  /* Makes it clear that this is clickable */
+    z-index: 1010;  /* Higher z-index to display in front */
+}
+
+/* New Nav styles */
+#top-nav {
+position: fixed;
+top: 0;
+right: 0;
+display: none; /* Initially hidden */
+padding-top: 40px; /* Padding at the top */
+padding-right: 40px; /* Padding at the right */
+z-index: 2000; /* Higher z-index */
+}
+
+#top-nav a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    font-family: 'PT Sans Caption', sans-serif; /* New font */
+    padding: 5px 10px; /* Add padding around the text */
+    transition: background-color 0.3s ease; /* Transition effect for smooth background color change */
+
+
+}
+
+#top-nav a:hover {
+    background-color: #ff1500c3; /* Red background on hover */
+    color: white; /* Keep the text color white */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown-content {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.415);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: visibility 0s, opacity 0.5s linear; /* Apply transitions */
+    transition-delay: 0.5s; /* Delay of 500 milliseconds */
+}
+
+.dropdown:hover .dropdown-content {
+    visibility: visible; /* Make it visible on hover */
+    opacity: 1; /* Fully opaque */
+    transition-delay: 0.5s; /* No delay when hiding */
+}
+
+/* Nav logo styles */
+#top-logo {
+    position: fixed;
+    top: 5px;  
+    left: 20px;  
+    width: 250px;  
+    height: 150px;  
+    background-image: url('/2/assets/Untitled-3\ transparent.png');  
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: none;  /* Initially hidden */
+    z-index: 2000; /* Higher z-index */
+    }
+
+#top-logo-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Keeps the text color unchanged, if any */
+    /* Add any other style properties to maintain the original appearance of the logo */
+} 
+
+#logo-section {
+    text-align: center;
+    width: 100%; /* This can be less than 100% if you want to constrain the width of the logo */
+    position: absolute; /* Absolute position with respect to bg-image-container */
+    top: 50%; /* Start at 50% from the top of bg-image-container */
+    transform: translateY(-50%); /* This will shift the element up by half its own height */
+    z-index: 10;
+    margin-top: 0; /* Remove the margin-top */
+}
+
+#crimlogo-img {
+    /* Fixed width for the logo image */
+    width: 500px; /* Set a fixed width for your logo */
+    height: auto; /* Maintain aspect ratio */
+    /* Remove the max-width property */
+}
+
+#coming-too-text {
+    font-family: 'Readex Pro', sans-serif;
+    font-weight: 700; /* This is optional since you're already loading the 700 weight */
+    color: #ffffff;
+}
+
+.coming-images {
+    /* Style for the two images you will add later */
+    width: 100px; /* Example width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Space between elements */
+}
+/* Rename aboutblack-square to crimsonsquare and restyle */
+#crimsonsquare {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 300px;
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    z-index: 10;
+    margin-top: 0; /* Remove this to eliminate the gap */
+    padding: 20px;
+}
+
+#crimsonsquare .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto; /* Centers the container */
+}
+
+#crimsonsquare .center-text {
+    width: 100%; /* Ensures the text elements take up 100% of their container */
+    justify-content: center;
+    text-align: center;
+}
+
+#crimsonsquare-header {
+    font-family: 'Readex Pro', sans-serif; /* Change the font family to 'Readex Pro' */
+    font-weight: 700; /* Make the font bold */
+    color: white;
+    font-size: 2em;
+    text-align: left; /* Align text to the left */
+    margin: 0;
+    padding: 10px 0; /* Adjust padding as needed, but keep it symmetrical */
+    width: auto;
+    min-width: 50%;
+    width: 70%;
+}
+
+
+#crimsonsquare-text {
+    font-family: 'Spectral', serif;
+    color: white;
+    font-size: 17px;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0; /* Adjust padding as needed, but keep it symmetrical */
+    width: 70%;
+}
+
+#crimsonsquare-text p {
+    font-family: 'Spectral', serif;
+    color: white;
+    font-size: 17px;
+    text-align: left;
+    margin: 0 0 20px 0; /* Add bottom margin for spacing */
+}
+
+.bullet-point::before {
+    content: ''; /* Necessary to add content, even if it's empty */
+    display: inline-block; /* Allows us to give it a width and height */
+    height: 10px; /* Bullet size */
+    width: 10px; /* Bullet size */
+    background-color: rgb(255, 255, 255); /* Bullet color */
+    border-radius: 50%; /* Makes it round */
+    margin-right: 15px; /* Space between the bullet and the text */
+    vertical-align: middle; /* Aligns the bullet with the middle of the text */
+}
+
+.center-container {
+    width: 100%; /* Ensure the container is full width */
+    text-align: center; /* Center text for all child elements */
+}
+
+.bold-text {
+    font-weight: bold; /* Make text bold */
+}
+.center-text {
+    text-align: center; /* This centers the text within its container */
+}
+
+.bold-text {
+    font-weight: bold; /* This makes the text bold */
+}
+
+/* SCREENSHOT SECTION */
+
+#image-container {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center the images in the container */
+    gap: 20px; /* Space between the images */
+    margin-top: 20px; /* Space above the container */
+}
+
+.fixed-size-image {
+    width: 400px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* This will cover the area of the div without stretching */
+}
+
+#image-container-three-one {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center the images in the container */
+    gap: 20px; /* Space between the images */
+    margin-top: 20px; /* Space above the container */
+}
+
+.fixed-size-image-three-one {
+    width: 400px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* This will cover the area of the div without stretching */
+}
+
+#image-container-three-two {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center the images in the container */
+    gap: 20px; /* Space between the images */
+    margin-top: 20px; /* Space above the container */
+}
+
+.fixed-size-image-three-two {
+    width: 400px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* This will cover the area of the div without stretching */
+}
+
+#image-container-one {
+    display: flex; /* Align items in a row */
+    justify-content: center; /* Center the images in the container */
+    gap: 20px; /* Space between the images */
+    margin-top: 20px; /* Space above the container */
+}
+
+.fixed-size-image-one {
+    width: 400px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* This will cover the area of the div without stretching */
+}
+
+
+/* FOOTER SECTION */
+
+#footer-section {
+    display: block; /* Make sure the footer is not set to none */
+    background-color: #141414;
+    text-align: center;
+    padding: 0px 0;
+    width: 100%;
+    flex-shrink: 0;
+
+    /* bottom: 0; Remove this as it's no longer absolutely positioned */
+    /* position: absolute; Change this to static or remove it */
+}
+
+/* Subscribe Section Styles */
+.subscribe-section {
+    text-align: center;
+    padding: 20px 0;
+    
+}
+
+.subscribe-header {
+    font-family: 'Spectral', serif; /* Same as the crimsonsquare text */
+    font-size: 2.5em; /* Adjust the font size as needed */
+    margin-bottom: 0.5em; /* Space between the title and the description */
+    color: #AB2F3B;
+}
+
+.subscribe-text {
+    font-family: 'Readex Pro', sans-serif;
+    font-weight: bold; /* Bold font */
+    font-size: 1em; /* Adjust the font size as needed */
+    margin-bottom: 2em; /* Space between the description and the logo */
+    color: #ffffff;
+}
+
+/* Subscribe Section Styles */
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.subscribe-input {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    min-width: 450px; /* You can adjust this value as needed */
+    font-family: 'Readex Pro', sans-serif; /* Set the Readex Pro font */
+    font-weight: 700; /* Bold font weight for Readex Pro */
+    background-color: #313131; /* Red background */
+    color: 7C7C7C;
+}
+
+.subscribe-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff1500c3; /* Red background */
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    text-transform: uppercase; /* Optional: if you want button text in uppercase */
+    font-family: 'Readex Pro', sans-serif; /* Set the Readex Pro font */
+}
+
+.confirmation-message-red {
+    color: green;
+    margin-top: 50px;
+    font-family: 'Readex Pro', sans-serif;
+    font-weight: bold; /* Bold font */
+
+}
+
+#footer-logo {
+background-image: url('/2/assets/footerlogo.png'); /* Path to your footer logo */
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+width: 370px; /* Set the width as needed */
+height: 200px; /* Set the height as needed */
+margin: 0 auto; /* Center the logo */
+z-index: 2;
+}
+
+#footer-info {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+color: white;
+}
+
+#footer-address, #footer-contact {
+font-family: 'Spectral', serif;
+flex: 1;
+margin-top: 10px; /* Adjust this value as needed */
+margin-bottom: 10px; /* Adjust this value as needed */
+
+}
+
+.footer-info {
+display: flex;
+gap: 10px; /* Adjust the space between the address and contact info */
+
+}
+
+.footer-contact a {
+color: white; /* Adjust link color */
+text-decoration: none; /* Optional: removes underline from links */
+}
+
+.footer-contact a:hover {
+text-decoration: underline; /* Optional: adds underline on hover */
+}
+.footer-line {
+width: 50%; /* Length of the horizontal line */
+border-top: 1px solid white; /* Line color and thickness */
+margin: 0px auto; /* Space above and below the line */
+}
+
+#disclaimer-text {
+text-align: center; /* Centers the text */
+color: white; /* Sets text color */
+font-family: 'Overpass', sans-serif; /* Overpass font */
+font-size: 14px; /* Adjust the size as needed */
+margin-top: 20px; /* Space above the text */
+margin-bottom: 20px; /* Space below the text */
+}
+
+.disclaimer-text {
+font-family: 'Overpass', sans-serif; /* Using Overpass font */
+color: white; /* Text color */
+text-align: center; /* Centering the text */
+width: 50%; /* Adjust width as needed */
+margin: 20px auto; /* Centering the div with auto margin and some spacing from the content above */
+font-size: 10px; /* Adjust font size as needed */
+}
+
+.social-links {
+    text-align: center; /* Center-align the container */
+    margin-top: 20px; /* Add some space above the links */
+    padding-bottom: 20px;
+}
+
+.social-links a {
+margin: 0 50px; /* Space out the images */
+display: inline-block; /* Display links inline */
+vertical-align: middle; /* Align images vertically in the middle */
+}
+
+.social-links img {
+width: 60px; /* Adjust width as needed */
+height: auto; /* Maintain aspect ratio */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 767px) {
+    #top-nav {
+        display: none;  /* Hide the top navigation bar */
+    }
+    #black-rectangle, #mobile-nav-icon {
+        display: block;  /* Show the black rectangle and mobile nav icon */
+        align-items: center; /* Center images when they are stacked */
+
+    }
+    #top-logo {
+        width: 120px;  /* New smaller width */
+        height: 60px;  /* New smaller height */
+        top: 10px;  /* Adjust position */
+        align-items: center; /* Center images when they are stacked */
+
+    }
+    /* Ensure mobile-nav-overlay is visible */
+    #mobile-nav-overlay {
+        display: flex; /* This will make sure it's displayed as a flex container */
+        align-items: center; /* Center images when they are stacked */
+
+    }
+    #image-container {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images when they are stacked */
+    }
+    #image-container-three-one {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images when they are stacked */
+    }
+    #image-container-three-two {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images when they are stacked */
+    }
+    #image-container-one {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images when they are stacked */
+    }
+
+    #footer-section .subscribe-section .subscribe-input,
+  #footer-section .subscribe-section .subscribe-btn {
+    font-size: 14px; /* Smaller font size */
+    padding: 5px 10px; /* Smaller padding */
+    /* You can also adjust width if necessary */
+    width: auto; /* Adjust as needed */
+  }
+
+}
